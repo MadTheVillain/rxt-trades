@@ -49,8 +49,12 @@ img{display:block;max-width:100%}
 .hero .sub{margin-top:18px;color:var(--dmut);font-size:15.5px;font-weight:500}
 
 /* lessons */
-.lessons{padding:44px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:26px}
-.lesson .thumb{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;display:block}
+.lessons{padding:44px 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.lesson .thumb{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;display:block;background:#0d1220}
+.lesson .thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.lesson .play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;background:#ffffffe6;display:grid;place-items:center;box-shadow:0 8px 22px rgba(0,0,0,.4);z-index:2;transition:.15s}
+.lesson:hover .play{transform:translate(-50%,-50%) scale(1.08)}
+.lesson .play svg{width:20px;height:20px;margin-left:3px;fill:#12101c}
 .lesson .thumb .bg{position:absolute;inset:0}
 .t1 .bg{background:radial-gradient(120% 120% at 20% 0%,#1b2540,#0d1220)}
 .t2 .bg{background:radial-gradient(120% 120% at 80% 0%,#241a3e,#120e22)}
@@ -196,27 +200,20 @@ img{display:block;max-width:100%}
 
   <!-- lessons -->
   <section class="wrap lessons">
-    <a class="lesson t1" href="#">
-      <div class="thumb">
-        <div class="bg"></div>
-        <svg class="spark" viewBox="0 0 400 225" preserveAspectRatio="none"><polyline points="0,155 40,145 72,165 108,122 150,138 188,92 228,112 268,72 308,98 348,56 400,74" fill="none" stroke="#22b8cf" stroke-width="3"/></svg>
-        <span class="sticker a">only enter here</span>
-        <span class="scrub"><span class="dot"></span> 9:30 open · 12:04</span>
-        <span class="cam">RX</span>
-      </div>
-      <div class="meta"><h3>How I Use the 9:30 Open to Confirm Entries</h3><span class="tag">Model</span></div>
-      <p>Exactly how I use the 9:30 market open within my process to confirm directional frameworks and get onside with high-probability entries.</p>
+    <a class="lesson" href="#">
+      <div class="thumb"><img src="assets/thumbs/candle-closures.png" alt="Candle Closures"><span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="meta"><h3>Candle Closures: How Reversals Really Form</h3><span class="tag">Price Action</span></div>
+      <p>The four-candle reversal closure — how to read momentum shifting before price actually turns.</p>
     </a>
-    <a class="lesson t2" href="#">
-      <div class="thumb">
-        <div class="bg"></div>
-        <svg class="spark" viewBox="0 0 400 225" preserveAspectRatio="none"><polyline points="0,120 42,132 82,110 122,142 160,100 200,120 240,80 280,104 320,58 360,84 400,48" fill="none" stroke="#7c6bff" stroke-width="3"/></svg>
-        <span class="sticker b">become profitable</span>
-        <span class="scrub"><span class="dot"></span> 3-step plan · 18:22</span>
-        <span class="cam">RX</span>
-      </div>
-      <div class="meta"><h3>How I'd Become Profitable Trading Again (If I Started Over)</h3><span class="tag">Process</span></div>
-      <p>The exact three steps I would follow to build consistency and reach profitability if I had to start over.</p>
+    <a class="lesson" href="#">
+      <div class="thumb"><img src="assets/thumbs/swing-points.png" alt="Swing Points"><span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="meta"><h3>Spot Every Swing Point</h3><span class="tag">Structure</span></div>
+      <p>Bullish vs bearish swing points and how to mark real market structure on any timeframe.</p>
+    </a>
+    <a class="lesson" href="#">
+      <div class="thumb"><img src="assets/thumbs/ohlc.png" alt="OHLC vs OLHC"><span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="meta"><h3>Read Any Candle: OHLC vs OLHC</h3><span class="tag">Basics</span></div>
+      <p>Candle anatomy — open, high, low, close — and why the sequence inside the candle matters.</p>
     </a>
   </section>
 
