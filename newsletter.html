@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Newsletter — RXT Trades</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head><body>
+<div class="dark">
+<header class="nav"><div class="nav-in">
+  <a class="brand" href="index.html"><span class="mk"></span><b>RXT</b></a>
+  <nav class="nlinks">
+    <a href="education.html">Education</a>
+    <a href="prop-firms.html">Prop Firms</a>
+    <a href="learn-more.html">Learn More</a>
+    <a class="pill" href="newsletter.html">Weekly Insights</a>
+    <a class="search" href="#" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3-3"/></svg></a>
+  </nav>
+  <button class="burger" onclick="document.querySelector('.nlinks').style.display='flex'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+</div></header>
+
+<section class="wrap phero"><h1>Exclusive insights directly to your email.</h1>
+<p class="sub">Market recaps, trading lessons, and mental frameworks.</p></section>
+<section class="wrap"><div class="nl">
+  <form class="nl-form" onsubmit="return false">
+    <label>Email</label>
+    <input type="email" placeholder="hello@email.com">
+    <button class="join">Join</button>
+    <p class="fine">You will never be sent spam. Unsubscribe at any time.</p>
+  </form>
+  <div class="nl-mock">
+    <div class="bar">Inbox · 1 new</div>
+    <div class="em">
+      <div class="from"><div class="mk"></div><div><b>RXT Trades</b><small>weekly@rxt-trades.com</small></div></div>
+      <h5>My daily model checklist</h5>
+      <p>At the foundation, the system I trade includes four separate parts. Within each step are the details on how to execute it properly — here's how this week's session broke down.</p>
+      <div class="cht"></div>
+    </div>
+  </div>
+</div></section>
+</div>
+
+<footer class="foot"><div class="wrap">
+  <div class="fcards">
+    <a class="fcard" href="prop-firms.html"><div class="glow"></div><div class="lbl">Code</div><b class="big">RXT</b>
+      <div class="chips"><span>Apex</span><span>Topstep</span><span>Tradeify</span></div></a>
+    <a class="fcard" href="https://thequantlab.trading" target="_blank"><div class="glow"></div><div class="lbl">Ecosystem</div><b class="big">Quant Lab</b>
+      <div class="chips"><span>Guidance</span><span>Mentors</span><span>Education</span><span>Analysis</span></div></a>
+  </div>
+  <div class="foot-grid">
+    <div class="foot-tag">
+      <h3>Creating independent traders through the charts.</h3>
+      <div class="made">Made by RXT</div>
+    </div>
+    <div><h4>Navigation</h4><ul>
+      <li><a href="index.html">Home</a></li><li><a href="education.html">Education</a></li>
+      <li><a href="prop-firms.html">Prop Firms</a></li><li><a href="learn-more.html">Learn More</a></li>
+      <li><a href="newsletter.html">Newsletter</a></li></ul></div>
+    <div><h4>Socials</h4><ul>
+      <li><a href="#">YouTube</a></li><li><a href="https://instagram.com/rxttrades" target="_blank">Instagram</a></li>
+      <li><a href="#">Twitter</a></li><li><a href="https://whop.com/rxt-free/" target="_blank">Discord</a></li></ul></div>
+    <div><h4>Legal</h4><ul>
+      <li><a href="#">Disclaimer</a></li><li><a href="#">Privacy Policy</a></li></ul></div>
+  </div>
+  <div class="copy"><span>© 2026 RXT Trades. All Rights Reserved.</span><span>Trading involves risk. Educational content only.</span></div>
+</div></footer>
+<script>
+document.querySelectorAll('.codechip,[data-copy]').forEach(function(el){el.addEventListener('click',function(){var t=el.getAttribute('data-copy')||'RXT';navigator.clipboard&&navigator.clipboard.writeText(t);var o=el.querySelector('.cpy');if(o){o.textContent='Copied';setTimeout(function(){o.textContent='Copy';},1500);}});});
+</script>
+</body></html>
