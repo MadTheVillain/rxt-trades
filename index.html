@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RXT Trades — Consistency through the charts</title>
+<meta name="description" content="Learn a defined, rule-based trading model. Weekly livestreams and free resources in a community of traders.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f8fb; --panel:#ffffff; --ink:#0f1319; --muted:#5c6675; --faint:#8c94a0;
+  --line:#e8ebf1; --soft:#f9fafb;
+  --purple:#7c6bff; --cyan:#22b8cf; --green:#12b3a6; --amber:#f5a524; --red:#e5484d;
+  --grad:linear-gradient(135deg,#7c6bff 0%,#22b8cf 100%);
+  --ink-panel:#12101c;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Inter,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{display:block}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--purple)}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:20;background:#f6f8fbe6;backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;max-width:1120px;margin:0 auto;padding:13px 24px}
+.brand{display:flex;align-items:center;gap:11px}
+.logo{width:30px;height:30px;border-radius:9px;transform:rotate(45deg);background:var(--grad);box-shadow:0 6px 18px rgba(124,107,255,.4)}
+.brand b{font-weight:900;font-size:18px;letter-spacing:-.4px}
+.menu{display:flex;align-items:center;gap:6px}
+.menu a{padding:8px 13px;border-radius:9px;font-size:14px;font-weight:600;color:var(--muted);transition:.15s}
+.menu a:hover{background:#fff;color:var(--ink)}
+.menu a.cta{background:var(--ink);color:#fff}
+.menu a.cta:hover{background:#000}
+.burger{display:none;width:40px;height:40px;border-radius:10px;border:1px solid var(--line);background:#fff;place-items:center}
+.burger svg{width:18px;height:18px}
+
+/* hero */
+.hero{padding:70px 0 26px}
+.hero h1{font-size:46px;font-weight:800;letter-spacing:-1.6px;line-height:1.03;max-width:640px}
+.hero h1 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .sub{margin-top:14px;font-size:17px;color:var(--muted);max-width:520px}
+
+/* lesson cards */
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:34px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.18s;box-shadow:0 1px 2px rgba(15,19,25,.03)}
+.card:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(15,19,25,.09);border-color:#dfe3ec}
+.thumb{position:relative;aspect-ratio:16/9;display:grid;place-items:center;overflow:hidden}
+.thumb.t1{background:linear-gradient(135deg,#141a2e,#1e2b52)}
+.thumb.t2{background:linear-gradient(135deg,#161226,#33215e)}
+.thumb .spark{position:absolute;inset:0;opacity:.5}
+.thumb .tagpill{position:absolute;top:12px;left:12px;background:#fff;color:#111;font-size:11px;font-weight:800;padding:5px 10px;border-radius:20px;letter-spacing:.02em}
+.thumb .tagpill.red{background:var(--red);color:#fff}
+.play{width:52px;height:52px;border-radius:50%;background:#ffffffee;display:grid;place-items:center;z-index:2;box-shadow:0 8px 22px rgba(0,0,0,.35)}
+.play svg{width:20px;height:20px;margin-left:3px;fill:#12101c}
+.card-body{padding:16px 18px 18px}
+.chip{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--purple);background:#7c6bff14;padding:4px 9px;border-radius:6px;margin-bottom:9px}
+.card-body h3{font-size:16.5px;font-weight:700;letter-spacing:-.3px;line-height:1.3}
+.card-body p{margin-top:7px;font-size:14px;color:var(--muted);line-height:1.5}
+
+/* community */
+.community{margin-top:70px;background:var(--ink-panel);border-radius:26px;overflow:hidden;position:relative}
+.community-in{padding:52px 44px 0}
+.community .eyebrow{color:#a99bff}
+.community h2{color:#fff;font-size:34px;font-weight:800;letter-spacing:-1px;margin-top:12px}
+.community .sub{color:#9aa0ad;font-size:16px;margin-top:12px;max-width:460px;line-height:1.55}
+.dbtn{display:inline-flex;align-items:center;gap:9px;margin-top:22px;background:var(--grad);color:#fff;font-weight:700;font-size:15px;padding:12px 22px;border-radius:12px;box-shadow:0 12px 28px rgba(124,107,255,.4)}
+.dbtn svg{width:18px;height:18px;fill:#fff}
+.discord-mock{margin:38px auto -6px;max-width:840px;background:#0b0a12;border:1px solid #241f38;border-top-left-radius:16px;border-top-right-radius:16px;padding:10px;display:flex;gap:0;box-shadow:0 -10px 50px rgba(124,107,255,.12)}
+.dm-rail{width:52px;display:flex;flex-direction:column;align-items:center;gap:12px;padding-top:10px}
+.dm-ic{width:38px;height:38px;border-radius:12px;background:#1c1930;display:grid;place-items:center;color:#8b8aa3;font-weight:800;font-size:13px}
+.dm-ic.active{background:var(--grad);color:#fff;border-radius:14px}
+.dm-list{width:180px;padding:14px 12px;border-left:1px solid #1a1728;border-right:1px solid #1a1728}
+.dm-list .cat{font-size:9.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#5b5872;margin:12px 0 7px}
+.dm-list .ch{display:flex;align-items:center;gap:7px;color:#8b8aa3;font-size:12.5px;font-weight:600;padding:5px 6px;border-radius:6px}
+.dm-list .ch.on{background:#ffffff10;color:#e9e7f2}
+.dm-list .ch .dot{width:6px;height:6px;border-radius:50%;background:var(--green)}
+.dm-main{flex:1;padding:14px 16px}
+.dm-head{color:#e9e7f2;font-size:13px;font-weight:700;padding-bottom:12px;border-bottom:1px solid #1a1728;display:flex;align-items:center;gap:7px}
+.dm-chart{margin-top:14px;background:#fff;border-radius:10px;padding:8px;height:190px}
+
+/* model */
+.model{padding:78px 0 20px}
+.model-top{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.model h2{font-size:34px;font-weight:800;letter-spacing:-1px}
+.model .sub{margin-top:12px;font-size:16px;color:var(--muted);max-width:440px;line-height:1.55}
+.model-btns{display:flex;gap:10px}
+.mb{padding:11px 18px;border-radius:11px;font-weight:700;font-size:14px;border:1px solid var(--line);background:#fff;color:var(--ink)}
+.mb.primary{background:var(--grad);color:#fff;border:none;box-shadow:0 10px 24px rgba(124,107,255,.32)}
+.steps{margin-top:40px;display:flex;flex-direction:column}
+.step{display:grid;grid-template-columns:1fr 420px;gap:40px;align-items:center;padding:30px 0;border-top:1px solid var(--line)}
+.step .num{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--purple);display:flex;align-items:center;gap:9px}
+.step .num i{width:7px;height:7px;border-radius:2px;background:var(--purple);display:inline-block}
+.step h3{margin-top:14px;font-size:21px;font-weight:700;letter-spacing:-.3px}
+.step p{margin-top:10px;font-size:15px;color:var(--muted);line-height:1.55;max-width:400px}
+.visual{height:210px;border-radius:18px;background:linear-gradient(150deg,#12101c,#211a3d);display:grid;place-items:center;overflow:hidden;position:relative;border:1px solid #241f38}
+.dial{width:118px;height:118px;border-radius:50%;border:10px solid #2a2745;border-top-color:var(--cyan);border-right-color:var(--purple);display:grid;place-items:center;color:#fff;font-weight:900;font-size:30px;letter-spacing:-1px}
+.tf-row{display:flex;gap:8px;align-items:flex-end}
+.tf{padding:12px 16px;border-radius:10px;font-weight:800;color:#cfd3f5;background:#ffffff10;border:1px solid #ffffff14;font-size:13px}
+.tf.hi{background:var(--grad);color:#fff;border:none;transform:translateY(-10px)}
+.ticks{background:#0e1524;border:1px solid #ffffff14;border-radius:10px;padding:12px 18px;color:#fff;font-weight:800;font-size:15px;display:flex;align-items:center;gap:8px}
+.ticks .up{color:var(--green)}
+
+/* testimonials */
+.testi{padding:70px 0 10px}
+.testi h2{font-size:30px;font-weight:800;letter-spacing:-1px;text-align:center}
+.testi .sub{text-align:center;color:var(--muted);margin-top:10px;font-size:16px}
+.quotes{margin-top:34px;columns:3;column-gap:16px}
+.q{break-inside:avoid;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:16px}
+.q p{font-size:14.5px;color:#2b3038;line-height:1.55}
+.q .who{display:flex;align-items:center;gap:10px;margin-top:14px}
+.q .av{width:34px;height:34px;border-radius:50%;background:var(--grad);display:grid;place-items:center;color:#fff;font-weight:800;font-size:13px}
+.q .who b{font-size:13.5px;font-weight:700}
+.q .who span{font-size:12px;color:var(--faint)}
+
+/* socials */
+.socials{padding:60px 0}
+.socials h2{font-size:28px;font-weight:800;letter-spacing:-.8px;text-align:center;max-width:520px;margin:0 auto}
+.soc-grid{margin-top:30px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.soc{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:12px;transition:.15s}
+.soc:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(15,19,25,.08)}
+.soc .si{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;color:#fff}
+.soc b{font-size:15px}
+.soc span{font-size:13px;color:var(--faint)}
+.soc svg{width:22px;height:22px;fill:#fff}
+
+/* CTA band */
+.band{margin:20px 0 70px;background:var(--ink-panel);border-radius:24px;text-align:center;padding:56px 24px}
+.band h2{color:#fff;font-size:30px;font-weight:800;letter-spacing:-1px}
+.band p{color:#9aa0ad;margin-top:12px;font-size:16px}
+.band .dbtn{margin-top:24px}
+
+/* footer */
+.foot{border-top:1px solid var(--line);padding:44px 0}
+.foot-in{display:grid;grid-template-columns:2fr 1fr 1fr;gap:24px}
+.foot .brand b{font-size:17px}
+.foot p{margin-top:12px;font-size:13.5px;color:var(--muted);max-width:280px;line-height:1.5}
+.foot h4{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:12px}
+.foot ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.foot ul a{font-size:14px;color:var(--muted)}
+.foot ul a:hover{color:var(--ink)}
+.copy{text-align:center;color:var(--faint);font-size:13px;padding-top:34px;margin-top:34px;border-top:1px solid var(--line)}
+.copy b{color:var(--muted)}
+
+@media(max-width:860px){
+  .menu{display:none} .burger{display:grid}
+  .hero h1{font-size:32px} .cards{grid-template-columns:1fr}
+  .community-in{padding:36px 24px 0} .discord-mock{max-width:none}
+  .dm-list{display:none} .model-top{flex-direction:column;align-items:flex-start}
+  .step{grid-template-columns:1fr;gap:20px} .visual{order:-1;width:100%}
+  .quotes{columns:1} .soc-grid{grid-template-columns:1fr 1fr}
+  .foot-in{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="#"><div class="logo"></div><b>RXT&nbsp;Trades</b></a>
+    <nav class="menu">
+      <a href="#lessons">Education</a>
+      <a href="#model">The Model</a>
+      <a href="#community">Community</a>
+      <a href="https://thequantlab.trading" target="_blank">Prop Firms</a>
+      <a class="cta" href="#community">Join Discord</a>
+    </nav>
+    <button class="burger" onclick="document.querySelector('.menu').style.display='flex'"><svg viewBox="0 0 24 24" fill="none" stroke="#0f1319" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  </div>
+</header>
+
+<main>
+<!-- HERO / LESSONS -->
+<section class="wrap hero" id="lessons">
+  <div class="eyebrow">Latest lessons</div>
+  <h1 style="margin-top:14px">Learn from the <span class="g">latest lessons.</span></h1>
+  <p class="sub">Start your journey to consistency in trading — one defined model, taught in the open.</p>
+
+  <div class="cards">
+    <a class="card" href="#">
+      <div class="thumb t1">
+        <svg class="spark" viewBox="0 0 400 225" preserveAspectRatio="none"><polyline points="0,150 40,140 70,160 110,120 150,135 190,90 230,110 270,70 310,95 350,55 400,72" fill="none" stroke="#22b8cf" stroke-width="3"/></svg>
+        <span class="tagpill">Only enter here</span>
+        <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="card-body">
+        <span class="chip">Model</span>
+        <h3>How I Use the 9:30 Open to Confirm Entries</h3>
+        <p>Exactly how I use the market open within my process to confirm directional frameworks and get onside with high-probability entries.</p>
+      </div>
+    </a>
+    <a class="card" href="#">
+      <div class="thumb t2">
+        <svg class="spark" viewBox="0 0 400 225" preserveAspectRatio="none"><polyline points="0,120 40,130 80,110 120,140 160,100 200,120 240,80 280,105 320,60 360,85 400,50" fill="none" stroke="#7c6bff" stroke-width="3"/></svg>
+        <span class="tagpill red">Become profitable</span>
+        <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="card-body">
+        <span class="chip">Process</span>
+        <h3>How I'd Become Profitable Again (If I Started Over)</h3>
+        <p>The exact three steps I'd follow to build consistency and reach profitability if I had to start from zero.</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- COMMUNITY -->
+<section class="wrap" id="community">
+  <div class="community">
+    <div class="community-in">
+      <div class="eyebrow">Free community</div>
+      <h2>Join the free community.</h2>
+      <p class="sub">Weekly New York livestreams alongside free resources in a community of 5,000+ traders.</p>
+      <a class="dbtn" href="#"><svg viewBox="0 0 24 24"><path d="M20 4.4A18 18 0 0 0 15.6 3l-.3.5a15 15 0 0 1 4 1.3 15 15 0 0 0-13-.1A15 15 0 0 1 8.7 3.5L8.4 3A18 18 0 0 0 4 4.4C1.5 8.3.9 12.1 1.2 15.8a18 18 0 0 0 5.5 2.8l.5-.7a10 10 0 0 1-2-1c.2-.1.4-.2.5-.3a13 13 0 0 0 11 0c.2.1.4.2.6.3a10 10 0 0 1-2 1l.5.7a18 18 0 0 0 5.5-2.8c.4-4.3-.6-8-2.8-11.4ZM8.5 13.6c-1 0-1.9-1-1.9-2.1 0-1.2.8-2.1 1.9-2.1s2 1 1.9 2.1c0 1.2-.8 2.1-1.9 2.1Zm7 0c-1 0-1.9-1-1.9-2.1 0-1.2.8-2.1 1.9-2.1s2 1 1.9 2.1c0 1.2-.8 2.1-1.9 2.1Z"/></svg>Join Discord</a>
+
+      <div class="discord-mock">
+        <div class="dm-rail">
+          <div class="dm-ic active">RX</div>
+          <div class="dm-ic">#</div>
+          <div class="dm-ic">+</div>
+        </div>
+        <div class="dm-list">
+          <div class="cat">Information</div>
+          <div class="ch on"># announcements</div>
+          <div class="ch"># resources</div>
+          <div class="ch"># rules</div>
+          <div class="cat">Trading</div>
+          <div class="ch"><span class="dot"></span> live-session</div>
+          <div class="ch"># daily-bias</div>
+          <div class="ch"># recaps</div>
+          <div class="cat">Community</div>
+          <div class="ch"># general</div>
+          <div class="ch"># wins</div>
+        </div>
+        <div class="dm-main">
+          <div class="dm-head"><span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block"></span> New York Session · live</div>
+          <div class="dm-chart">
+            <svg viewBox="0 0 760 175" width="100%" height="100%" preserveAspectRatio="none">
+              <g stroke="#12b3a6" stroke-width="2">
+                <line x1="40" y1="60" x2="40" y2="120"/><rect x="32" y="75" width="16" height="30" fill="#12b3a6" stroke="none"/>
+                <line x1="90" y1="50" x2="90" y2="110"/><rect x="82" y="60" width="16" height="35" fill="#12b3a6" stroke="none"/>
+              </g>
+              <g stroke="#e5484d" stroke-width="2">
+                <line x1="140" y1="55" x2="140" y2="125"/><rect x="132" y="70" width="16" height="40" fill="#e5484d" stroke="none"/>
+              </g>
+              <g stroke="#12b3a6" stroke-width="2">
+                <line x1="190" y1="45" x2="190" y2="115"/><rect x="182" y="55" width="16" height="45" fill="#12b3a6" stroke="none"/>
+                <line x1="240" y1="35" x2="240" y2="95"/><rect x="232" y="45" width="16" height="38" fill="#12b3a6" stroke="none"/>
+              </g>
+              <g stroke="#e5484d" stroke-width="2">
+                <line x1="290" y1="40" x2="290" y2="105"/><rect x="282" y="52" width="16" height="34" fill="#e5484d" stroke="none"/>
+                <line x1="340" y1="55" x2="340" y2="130"/><rect x="332" y="72" width="16" height="42" fill="#e5484d" stroke="none"/>
+              </g>
+              <g stroke="#12b3a6" stroke-width="2">
+                <line x1="390" y1="60" x2="390" y2="140"/><rect x="382" y="88" width="16" height="42" fill="#12b3a6" stroke="none"/>
+                <line x1="440" y1="50" x2="440" y2="120"/><rect x="432" y="66" width="16" height="44" fill="#12b3a6" stroke="none"/>
+                <line x1="490" y1="35" x2="490" y2="100"/><rect x="482" y="46" width="16" height="40" fill="#12b3a6" stroke="none"/>
+              </g>
+              <g stroke="#e5484d" stroke-width="2">
+                <line x1="540" y1="30" x2="540" y2="90"/><rect x="532" y="40" width="16" height="30" fill="#e5484d" stroke="none"/>
+              </g>
+              <g stroke="#12b3a6" stroke-width="2">
+                <line x1="590" y1="40" x2="590" y2="105"/><rect x="582" y="50" width="16" height="40" fill="#12b3a6" stroke="none"/>
+                <line x1="640" y1="28" x2="640" y2="85"/><rect x="632" y="38" width="16" height="34" fill="#12b3a6" stroke="none"/>
+                <line x1="690" y1="20" x2="690" y2="72"/><rect x="682" y="30" width="16" height="30" fill="#12b3a6" stroke="none"/>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ONE DEFINED MODEL -->
+<section class="wrap model" id="model">
+  <div class="model-top">
+    <div>
+      <div class="eyebrow">The system</div>
+      <h2 style="margin-top:12px">One defined model.</h2>
+      <p class="sub">A system built through years of refinement to capture expansion moves within the daily candle.</p>
+    </div>
+    <div class="model-btns">
+      <a class="mb primary" href="#lessons">Start learning</a>
+      <a class="mb" href="#community">Get guidance</a>
+    </div>
+  </div>
+
+  <div class="steps">
+    <div class="step">
+      <div>
+        <div class="num"><i></i>Framework</div>
+        <h3>Read the daily direction first</h3>
+        <p>Identifying reactions at daily-relevant swings to understand the direction of the current day.</p>
+      </div>
+      <div class="visual"><div class="dial">1D</div></div>
+    </div>
+    <div class="step">
+      <div>
+        <div class="num"><i></i>Confirmation</div>
+        <h3>Align the higher timeframes</h3>
+        <p>Aligning the higher timeframes with a daily profile to provide confirmation to the idea.</p>
+      </div>
+      <div class="visual"><div class="tf-row"><div class="tf">1D</div><div class="tf hi">4H</div><div class="tf">1H</div></div></div>
+    </div>
+    <div class="step">
+      <div>
+        <div class="num"><i></i>Entry</div>
+        <h3>Enter on the opposing signature</h3>
+        <p>Entering on opposing candle signatures in the continuation to get onside with the expansion.</p>
+      </div>
+      <div class="visual"><div class="ticks"><span class="up">▲</span> +652 ticks</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="wrap testi">
+  <h2>Real results from real traders.</h2>
+  <p class="sub">A snapshot of the community putting the model to work.</p>
+  <div class="quotes">
+    <div class="q"><p>“First green month ever. The daily bias framework finally made price make sense to me.”</p><div class="who"><div class="av">YO</div><div><b>Yoshi</b><br><span>Community member</span></div></div></div>
+    <div class="q"><p>“Passed my first 50k eval in nine days following the model exactly. No more guessing entries.”</p><div class="who"><div class="av">ER</div><div><b>Erik</b><br><span>Funded trader</span></div></div></div>
+    <div class="q"><p>“The livestreams are gold. Watching the read happen live is worth more than any course I've bought.”</p><div class="who"><div class="av">OV</div><div><b>Ovi</b><br><span>Community member</span></div></div></div>
+    <div class="q"><p>“Went from over-trading every candle to two clean setups a week. Consistency is real now.”</p><div class="who"><div class="av">FM</div><div><b>FrannyMida</b><br><span>Community member</span></div></div></div>
+    <div class="q"><p>“The three-step model is simple enough to actually follow under pressure. That's what changed it for me.”</p><div class="who"><div class="av">MK</div><div><b>Makusan</b><br><span>Funded trader</span></div></div></div>
+    <div class="q"><p>“Best free community in the space. The daily-bias channel alone is worth showing up for.”</p><div class="who"><div class="av">DZ</div><div><b>Dezz</b><br><span>Community member</span></div></div></div>
+  </div>
+</section>
+
+<!-- SOCIALS -->
+<section class="wrap socials">
+  <h2>Follow along with value across all socials.</h2>
+  <div class="soc-grid">
+    <a class="soc" href="#"><div class="si" style="background:#ff0000"><svg viewBox="0 0 24 24"><path d="M23 7.5a3 3 0 0 0-2.1-2.1C19 5 12 5 12 5s-7 0-8.9.4A3 3 0 0 0 1 7.5 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.5a3 3 0 0 0 2.1 2.1C5 19 12 19 12 19s7 0 8.9-.4a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.5 31 31 0 0 0-.5-4.5ZM10 15V9l5 3-5 3Z"/></svg></div><b>YouTube</b><span>Breakdowns & recaps</span></a>
+    <a class="soc" href="https://instagram.com/rxttrades" target="_blank"><div class="si" style="background:linear-gradient(135deg,#f9ce34,#ee2a7b,#6228d7)"><svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3 0 4.1.1 1 0 1.7.2 2.3.5.6.2 1.1.5 1.6 1s.8 1 1 1.6c.3.6.4 1.3.5 2.3.1 1.1.1 1.4.1 4.1s0 3-.1 4.1c0 1-.2 1.7-.5 2.3-.2.6-.5 1.1-1 1.6s-1 .8-1.6 1c-.6.3-1.3.4-2.3.5-1.1.1-1.4.1-4.1.1s-3 0-4.1-.1c-1 0-1.7-.2-2.3-.5-.6-.2-1.1-.5-1.6-1s-.8-1-1-1.6c-.3-.6-.4-1.3-.5-2.3C2 15 2 14.7 2 12s0-3 .1-4.1c0-1 .2-1.7.5-2.3.2-.6.5-1.1 1-1.6s1-.8 1.6-1c.6-.3 1.3-.4 2.3-.5C8.6 2 9 2 12 2Zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4ZM17.4 6a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4Z"/></svg></div><b>Instagram</b><span>@rxttrades</span></a>
+    <a class="soc" href="#"><div class="si" style="background:#111"><svg viewBox="0 0 24 24"><path d="M18.2 2H21l-6.5 7.4L22 22h-6.2l-4.8-6.3L5.5 22H2.7l7-8L2 2h6.3l4.3 5.7L18.2 2Zm-1 18h1.6L7 3.7H5.3L17.2 20Z"/></svg></div><b>X / Twitter</b><span>Live thoughts</span></a>
+    <a class="soc" href="#"><div class="si" style="background:#5865F2"><svg viewBox="0 0 24 24"><path d="M20 4.4A18 18 0 0 0 15.6 3l-.3.5a15 15 0 0 1 4 1.3 15 15 0 0 0-13-.1A15 15 0 0 1 8.7 3.5L8.4 3A18 18 0 0 0 4 4.4C1.5 8.3.9 12.1 1.2 15.8a18 18 0 0 0 5.5 2.8l.5-.7a10 10 0 0 1-2-1c.2-.1.4-.2.5-.3a13 13 0 0 0 11 0c.2.1.4.2.6.3a10 10 0 0 1-2 1l.5.7a18 18 0 0 0 5.5-2.8c.4-4.3-.6-8-2.8-11.4ZM8.5 13.6c-1 0-1.9-1-1.9-2.1 0-1.2.8-2.1 1.9-2.1s2 1 1.9 2.1c0 1.2-.8 2.1-1.9 2.1Zm7 0c-1 0-1.9-1-1.9-2.1 0-1.2.8-2.1 1.9-2.1s2 1 1.9 2.1c0 1.2-.8 2.1-1.9 2.1Z"/></svg></div><b>Discord</b><span>5,000+ traders</span></a>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="wrap">
+  <div class="band">
+    <h2>Creating independent traders through the charts.</h2>
+    <p>Join the free community and start building consistency this week.</p>
+    <a class="dbtn" href="#" style="justify-content:center">Join Discord</a>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div>
+      <div class="brand"><div class="logo"></div><b>RXT&nbsp;Trades</b></div>
+      <p>Where traders find consistency through the charts. Independent education — not financial advice.</p>
+    </div>
+    <div>
+      <h4>Socials</h4>
+      <ul>
+        <li><a href="#">YouTube</a></li>
+        <li><a href="https://instagram.com/rxttrades" target="_blank">Instagram</a></li>
+        <li><a href="#">X / Twitter</a></li>
+        <li><a href="#">Discord</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>More</h4>
+      <ul>
+        <li><a href="#model">The Model</a></li>
+        <li><a href="https://thequantlab.trading" target="_blank">Prop Firms</a></li>
+        <li><a href="#">Disclaimer</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap"><div class="copy">© <span id="yr"></span> RXT Trades. All rights reserved. · Trading involves risk. Educational content only.</div></div>
+</footer>
+<script>document.getElementById('yr').textContent='2026';</script>
+</body>
+</html>
